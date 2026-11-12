@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Budträning – Nordisk standard</title>
+<style>
+:root{--bg:#e6ede8;--panel:#fbfaf6;--ink:#16241f;--mu:#58706a;--line:#c9d5cd;--rs:#b3261e;--fa:#14513f;--fb:#0a3328;--brass:#b8902f;--hint:rgba(20,81,63,.09);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07201b;--panel:#0f2f27;--ink:#efeadc;--mu:#9bb5aa;--line:#1f4a3e;--rs:#ff8d83;--brass:#d5ad55;--hint:rgba(255,255,255,.05)}}
+:root[data-theme="dark"]{--bg:#07201b;--panel:#0f2f27;--ink:#efeadc;--mu:#9bb5aa;--line:#1f4a3e;--rs:#ff8d83;--brass:#d5ad55;--hint:rgba(255,255,255,.05)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,"SF Pro Text",system-ui,sans-serif;min-height:100dvh;touch-action:manipulation;-webkit-user-select:none;user-select:none;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+.serif,h1,.status,.brand,.hb,.ac,.lv button,.st button,.cd,.rv .h{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+#app{min-height:100dvh;display:flex;flex-direction:column}
+button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;min-height:44px;padding:0 16px;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+button.pri{background:var(--fa);color:#f6f1e2;border-color:var(--fa);font-weight:600}
+button.sm{min-height:38px;font-size:14px;padding:0 12px}
+button:disabled{opacity:.3;cursor:default}
+.mu{color:var(--mu);font-size:14px}
+.red{color:var(--rs)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.status{font-size:21px;font-weight:600;margin:0 0 10px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:600}
+.brand b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,var(--fa),var(--fb));color:#f4efe0;font-size:20px}
+.chip{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:14px;color:var(--mu)}
+.chip.hi{color:var(--ink);font-weight:600}
+.main{flex:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(340px,1fr);gap:16px;padding:16px 18px 22px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:1fr}}
+.table{border-radius:30px;background:radial-gradient(120% 110% at 50% 38%,var(--fa),var(--fb));box-shadow:inset 0 0 0 2px rgba(213,173,85,.6),inset 0 0 0 10px rgba(0,0,0,.18),0 14px 32px rgba(0,0,0,.25);padding:22px;min-height:580px;display:grid;grid-template-columns:104px 1fr 104px;grid-template-rows:auto 1fr auto;gap:10px;color:#f1ecdc}
+.table.end{grid-template-columns:150px 1fr 150px}
+.seatT{grid-column:2;grid-row:1;justify-self:center}.seatL{grid-column:1;grid-row:2;align-self:center}.seatR{grid-column:3;grid-row:2;align-self:center}
+.center{grid-column:2;grid-row:2;display:grid;place-items:center;text-align:center;align-content:center;gap:6px}
+.mine{grid-column:1/4;grid-row:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.table .red{color:#ff9d93}
+.seat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:9px 12px;border-radius:18px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.12)}
+.seat.turn{border-color:#d5ad55;box-shadow:0 0 0 3px rgba(213,173,85,.4)}
+.seat .nm,.nm{font-weight:600}
+.seat small{opacity:.75;font-size:12px}
+.lc{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:18px;min-height:24px}
+.dl{display:inline-block;margin-left:6px;background:#d5ad55;color:#1b1608;border-radius:6px;padding:0 6px;font-weight:700;font-size:12px}
+.bks{display:flex}.bk{width:15px;height:23px;border-radius:3px;margin-left:-9px;border:1px solid #f1ecdc;background:repeating-linear-gradient(45deg,#7b2a2a 0 3px,#963636 3px 6px)}.bk:first-child{margin-left:0}
+.hb{font-size:64px;line-height:1;font-weight:600}.hb small{font-size:26px}
+.hl{opacity:.85;font-size:15px}
+.fan{display:flex;justify-content:center;padding:6px 0 2px}
+.cd{position:relative;width:66px;height:98px;border-radius:10px;background:#fbf8ef;color:#171717;box-shadow:0 2px 7px rgba(0,0,0,.4),inset 0 0 0 1px rgba(0,0,0,.08);margin-left:-30px;padding:6px 7px;font-weight:700;line-height:1;display:flex;flex-direction:column}
+.cd:first-child{margin-left:0}.cd b{font-size:25px}.cd i{font-style:normal;font-size:30px;margin-top:2px}.cd.r{color:#c0262d}
+.cd::after{content:attr(data-s);position:absolute;right:6px;bottom:4px;font-size:46px}
+@media (min-width:1100px){.cd{width:78px;height:114px;margin-left:-34px}.cd b{font-size:28px}.cd i{font-size:34px}.cd::after{font-size:54px}}
+.ghost{background:rgba(0,0,0,.28);color:#f1ecdc;border-color:rgba(255,255,255,.22)}
+.eh{padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.1);min-width:130px}.eh.us{border-color:rgba(213,173,85,.6)}
+.eh b{display:block;margin-bottom:2px}.table .hand div{font-size:15px;white-space:nowrap}
+.side{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin:0}
+.card p{margin:4px 0}
+.ascroll{max-height:250px;overflow:auto}
+.aud{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.ah{font-size:13px;color:var(--mu);padding-bottom:4px;border-bottom:2px solid var(--line)}.ah.us{border-bottom-color:var(--brass);color:var(--ink);font-weight:600}
+.ac{min-height:42px;border-radius:10px;display:grid;place-items:center;font-size:23px;font-weight:600;background:var(--hint)}
+.ac.pass{font:14px/1 -apple-system,system-ui,sans-serif;color:var(--mu);background:transparent;border:1px dashed var(--line)}
+.ac.cur{outline:2px dashed var(--brass);color:var(--mu)}
+.lv{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.st{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}.ops{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;margin-top:8px}
+.lv button{min-height:58px;font-size:27px;font-weight:700;padding:0}.st button{min-height:66px;font-size:34px;padding:0}
+.lv button.on,.st button.on{background:var(--fa);color:#fff;border-color:var(--fa)}.st button.on .red{color:#ffb3ab}
+.st .nt{font-size:23px;font-weight:700}
+.ops button{min-height:58px;font-weight:700;font-size:18px;color:#fff;border:0}
+.ops [data-o="P"]{background:#2e8b57}.ops [data-o="X"]{background:#c0392b}.ops [data-o="XX"]{background:#2c6fb0}
+.wait{text-align:center;padding:26px 14px}
+.rv{border-left:6px solid var(--line)}.rv .h{font-size:19px;font-weight:700}
+.rv.ok{border-left-color:#2e8b57;background:rgba(46,139,87,.13)}.rv.fel{border-left-color:#d24a3a;background:rgba(210,74,58,.14)}.rv.mid{border-left-color:#c9962b;background:rgba(201,150,43,.15)}
+.hero{max-width:1000px;margin:0 auto;padding:30px 22px;width:100%}
+.hero h1{font-size:46px;margin:0 0 4px;font-weight:600}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mode,.seatpick{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;padding:20px;min-height:120px;border-radius:20px;color:var(--ink);background:var(--panel);border:2px solid var(--line)}.mode.on,.seatpick.on{color:#f4efe0;border-color:transparent;background:linear-gradient(150deg,var(--fa),var(--fb));box-shadow:inset 0 0 0 2px rgba(213,173,85,.5)}
+.mode b,.seatpick b{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:26px}
+.mode span,.seatpick span{opacity:.85;font-size:15px}
+.foc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.ft{min-height:52px;text-align:left;line-height:1.25}.ft.on{background:var(--fa);color:#fff;border-color:var(--fa);font-weight:600}
+.hero .card{margin-top:14px}
+@media (max-width:700px){.modes{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"><div class="card mu">Laddar …</div></div>
+<script>
+(function(){
+var SU=['C','D','H','S','N'],SYM={C:'♣',D:'♦',H:'♥',S:'♠',N:'NT'},RK={14:'E',13:'K',12:'D',11:'Kn',10:'T'};
+var SEATS=['N','E','S','W'],NAME={N:'Norr',E:'Öst',S:'Syd',W:'Väst'};
+var app=document.getElementById('app');
+var lastSeat=null,modeSel='stord',state=null,seat=null,pick=null,loaded=true,busy=false,rng=Math.random;
+try{seat=localStorage.getItem('bt_seat')}catch(e){}
+try{showHp=localStorage.getItem('bt_hp')==='1'}catch(e){}
+
+var REF="REGLER (enda källan – Nordisk standard 2012-08-22). Förkortningar: lå=♣/♦, hö=♥/♠, hp: E4 K3 D2 Kn1; stödpoäng vid stöd eller egen 6+färg/5-5: renons 3, singel 2, dubbelton 1; htp=hp+stp. Balanserad hand: 4333, 4432, 5332.\n"+
+"ÖPPNING: 1 i färg 12-19 hp, 4+färg (11 hp om bra 5+färg). 1NT 15-17 hp balanserad (även 5hö332). 2♣ utgångskrav eller 22-24 balanserad. 2♦/2♥/2♠ 6-10 hp exakt 6-korts färg (med 11 hp och 6-färg öppna 1 i färgen). 2NT 20-21 balanserad. 3 i färg spärr 6-10 hp 7-kort. 4 i färg spärr 8-kort. Färgval: längsta färgen; två 5-kort: högsta; två eller tre 4-kort: lägsta.\n"+
+"SVAR PÅ 1 I FÄRG: 1NT 6-10 hp, förnekar 4-korts stöd och 4-korts färg på 1-nivå. 1 över 1: 6+ hp 4+färg rondkrav. 2 över 1: 11+ hp 4+färg rondkrav. Stöd 4+ i lå: 2 lå 6-9 htp, 3 lå 10-12 htp, 4 lå spärr max 9 htp, 2NT 13+ htp Stenberg utgångskrav. Stöd 4+ i hö: 2 hö 6-9, 3 hö 10-12, 4 hö spärr max 12, 2NT 13+ Stenberg. Dubbelhopp i ny färg: renons i färgen, 4+stöd, 13+ htp. Har man stöd i lå och 4+hö bjuds högfärg först. Högfärgsstöd visas alltid.\n"+
+"STENBERG 2NT i hö (ÖH): 3 hö extra styrka 15+ htp ingen singel; 3 lå singel i den bjudna lågfärgen; 3 andra hö singel i andra högfärgen; 3NT 12-14 hp balanserad. Stenberg i lå: 3 lå 15+ htp ingen singel; 3 andra lå singel i andra lågfärgen; 3 hö singel i högfärgen; 3NT 12-14 balanserad.\n"+
+"ÖPPNINGSHANDENS ANDRA BUD: trumfstöd 4+: lägsta höjning 12-16 htp, enkelhopp 17-19, hopp till utgång 20+. Egen 6+färg utan sidofärg: lägsta nivå 12-16, enkelhopp 17-19, hopp till utgång (hö) 20+. Balanserad: NT på lägsta nivå 12-14 (bjöd partnern 1NT passar man), hopp i NT 18-19. Tvåfärgshand: andra färgen på lägsta nivå 12-17 om bara 5-4 (svarshanden får passa med 6-7 hp och stöd); hopp i andra färgen 18+ htp minst 5-4; stigande (reverse) budgivning 18+ och minst 5-4. Efter 1 hö–2 hö: 3 hö 17-19 htp naturlig invit utan singel; ny färg 17-19 htp med singel i bjuden färg.\n"+
+"FORTSATT BUDGIVNING: ny färg är krav en rond (utgångskrav om på 3-nivå). Fjärde färg söker håll i den bjudna färgen. Undantag: svarshandens färg på lägsta nivå efter att ha bjudit 1NT är ej krav (6-9 hp, 6+färg).\n"+
+"ÖPPNING 2♦/2♥/2♠ (6-10 hp, 6-kort): ny färg 5+ krav till minst 3 i öppningsfärgen; 3 i öppningsfärgen spärrhöjning 3+stöd ej invit; 3NT slutbud; hopp renons slaminvit; 2NT invit med 2+stöd; ombudsbud på 3-nivå 6-8 hp; 3NT/4 hö 9-10 hp.\n"+
+"ÖPPNING 1NT (15-17): 2♣ Stayman (fråga efter 4-korts hö, bör ha egen 4-hö); 2♦ överföring ♥ (5+); 2♥ överföring ♠ (5+); 2♠ dåliga kort 6+lå (vill spela 3 lå, ÖH bjuder 2NT eller 3♣ efter längd); 2NT naturlig invit balanserad utan 4-korts hö; 3 lå invit bra 6+lå; 3NT slutbud. Svar på Stayman: 2♦ ingen 4+hö; 2♥ 4-5 korts ♥ (kan ha 4-4 i hö); 2♠ 4-5 korts ♠. Efter Stayman: 2NT och 3 i ÖH:s hö är invit; ny färg ukrav naturligt (5+hö eller 4+lå); med utgångsstyrka och 5-hö obalanserad bjuds 2♣ och sedan 3 hö. Efter överföring (2♦→2♥): pass dåliga kort 5+♥; 2NT invit jämn exakt 5♥; 3♥ invit 6+; 2♠ rondkrav 5♥+4♠; 3 lå ukrav 5♥+4+lå; 3NT välj utgång jämn exakt 5♥; 4 lå kontroll/slamintresse; 4♥ slutbud; 4NT RKC. Samma för ♠. Överföring: ÖH bjuder färgen nästan alltid (3 i färgen med max och 4+stöd). Efter motståndarbud över 1NT gäller inte Stayman/överföring: ny färg på 2-nivå naturlig invit 5+, på 3-nivå utgångskrav 5+; dubbling upplysning (minst invit, 3+ i objudna).\n"+
+"ÖPPNING 2NT (20-21 balanserad; 22-24/25-27 via 2♣): som efter 1NT en nivå högre (3♣ Stayman, 3♦/3♥ överföringar, 3NT slutbud).\n"+
+"ÖPPNING 2♣ (utgångskrav eller minst 22 balanserad): svar 2 hö = 6+hp bra 5+hö; 3 lå = 6+hp bra 6+lå; 2♦ om handen inte passar (variant: alltid 2♦). Efter 2♣–2♦: 2 hö ukrav 5+hö; 2NT 22-24 jämn; 3 lå ukrav 5+lå; 3NT 25-27 jämn. Efter 2♣–2 hö/3 lå: närmsta bud 0-5 hp och ej trumfstöd (Herbertavslag); 3 hö 6+hp och 3+stöd; 4 hö 0-5 hp stöldvärde 4+stöd; ny färg 6+hp 5+färg; 3NT 6+hp jämn.\n"+
+"SLAM: RKC 4NT med trumf fastställd: 5♣ 0 eller 3 ess (av 5), 5♦ 1 eller 4, 5♥ 2 ess utan trumfdam, 5♠ 2 ess med trumfdam, 5NT 3 ess och renons. Ej fastställd trumf (4 ess): 5♣ 0 eller 4, 5♦ 1, 5♥ 2, 5♠ 3. Kontrollbud: ny färg på 4-nivå efter fastställd trumf visar slamintresse och kontroll (E/K eller renons/singel).\n"+
+"INKLIV: enkelt inkliv 12-17 hp (inkliv 1 hö: 10+hp och bra 5+färg). 1NT-inkliv 15-17 med håll i öppningsfärgen. Hoppande inkliv 6-10 hp 6+färg. Svar på inkliv: 1NT 8-10 balanserad med håll; 2NT 11-13 bra håll; 3NT 14+ bra håll; enkel höjning 6-9 hp 3-kort stöd; dubbel höjning 6-9 4-kort; trippel höjning 6-9 5-kort; ny färg 8+ 5+färg rondkrav (10+ om 2-nivå); hopp i ny färg 14+ bra 6+färg utgångskrav; överbud (deras färg) 10+ hp 3+stöd. Hoppinkliv 2 hö: 6-10 hp bra 6-kort, fortsättning som efter öppning 2 hö.\n"+
+"UPPLYSNINGSDUBBLING (D): 12+ hp och minst 3 kort i objudna färger, eller 17+ alla fördelningar. Utan stöd som bjuder egen färg/NT efter dubbling: 18+ hp. Svar: 1NT 6-9 hp håll i öppningsfärgen; 2NT 10-12 håll; 3NT 13+ håll; färg på lägsta nivå 0-7 hp (i värsta fall 3-kort); hopp i färg 8-9 htp 4+färg; hopp till 3-läget 10-12 htp helst 5+färg; överbud 10+ hp krav; pass bara med många kort i öppningsfärgen. Försvar mot spärröppningar (2 och högre): D = UD eller 17+ hp; 2NT 16-18 balanserad; överbud = hållfråga.";
+
+function side(s){return s==='N'||s==='S'?0:1}
+function isBot(s){return s==='E'||s==='W'}
+function partner(s){return SEATS[(SEATS.indexOf(s)+2)%4]}
+function rank(c){return (+c[0])*5+SU.indexOf(c[1])}
+function isBid(c){return c!=='P'&&c!=='X'&&c!=='XX'}
+function txt(c){return c==='P'?'Pass':c==='X'||c==='XX'?c:c[0]+SYM[c[1]]}
+function fmt(c){if(c==='P')return 'Pass';if(!isBid(c))return c;var s=c[1];return '<span class="'+(s==='H'||s==='D'?'red':'')+'">'+c[0]+SYM[s]+'</span>'}
+function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m]})}
+function shuffleDeal(){
+  var d=[],i,j,s=['S','H','D','C'];
+  for(i=0;i<4;i++)for(j=2;j<=14;j++)d.push(s[i]+j);
+  for(i=d.length-1;i>0;i--){j=Math.floor(rng()*(i+1));var t=d[i];d[i]=d[j];d[j]=t}
+  return {N:d.slice(0,13),E:d.slice(13,26),S:d.slice(26,39),W:d.slice(39)};
+}
+function turn(st){return SEATS[(SEATS.indexOf(st.dealer)+st.bids.length)%4]}
+function ctx(st){
+  var r={lb:null,lbS:null,dbl:0,dblS:null};
+  st.bids.forEach(function(b){
+    if(isBid(b.c)){r.lb=b.c;r.lbS=b.s;r.dbl=0;r.dblS=null}
+    else if(b.c==='X'){r.dbl=1;r.dblS=b.s}
+    else if(b.c==='XX'){r.dbl=2}
+  });
+  return r;
+}
+function ended(st){
+  var b=st.bids;if(!b.length)return false;
+  var any=b.some(function(x){return x.c!=='P'});
+  if(!any)return b.length>=4;
+  return b.length>=4&&b.slice(-3).every(function(x){return x.c==='P'});
+}
+function legal(st,c,s){
+  var x=ctx(st);
+  if(c==='P')return true;
+  if(c==='X')return !!x.lb&&x.dbl===0&&side(x.lbS)!==side(s);
+  if(c==='XX')return x.dbl===1&&side(x.dblS)!==side(s);
+  return !x.lb||rank(c)>rank(x.lb);
+}
+function hpOf(h){var p=0;h.forEach(function(k){var n=+k.slice(1);if(n>=11)p+=n-10});return p}
+function maxLen(h){var L={S:0,H:0,D:0,C:0};h.forEach(function(k){L[k[0]]++});return Math.max(L.S,L.H,L.D,L.C)}
+function nsOk(d){var a=hpOf(d.N),b=hpOf(d.S);return a+b>=22&&Math.max(a,b)>=12}
+function oppClear(h){var p=hpOf(h),m=maxLen(h);return (p>=12&&m>=5)||(p>=6&&p<=10&&m>=6)}
+function oppBorder(h){var p=hpOf(h);return p>=10&&p<=11&&maxLen(h)>=5}
+var FOC=[['alla','Alla slags givar'],['nt','1NT, Stayman och överföringar'],['stenberg','Stenberg 2NT (stöd i hög- och lågfärg)'],['tva','2♣-öppning (starka givar)'],['rkc','RKC (essfråga i högfärg)'],['slam','Slambudgivning (kontrollbud och RKC)'],['trumf','Trumfstöd (stödbud i färg)'],['sang','Sanghänder (1NT/2NT och svar)'],['invit','Inviter (invit eller utgång)'],['tvafarg','Tvåfärgshänder (andra bud)'],['svag','Svaga öppningar och spärrbud'],['dubbling','Upplysningsdubbling (dubbla och svara, alltid störd)'],['inkliv','Inkliv och dubbling (störd)']];
+function focLabel(f){for(var i=0;i<FOC.length;i++)if(FOC[i][0]===f)return FOC[i][1];return ''}
+function shapeOf(h){var L={S:0,H:0,D:0,C:0};h.forEach(function(k){L[k[0]]++});return L}
+function isBal(L){var s=[L.S,L.H,L.D,L.C].sort(function(a,b){return b-a}).join('');return s==='4333'||s==='4432'||s==='5332'}
+function htpWith(h,su){var L=shapeOf(h),t=hpOf(h);['S','H','D','C'].forEach(function(x){if(x!==su){var n=L[x];t+=n===0?3:n===1?2:n===2?1:0}});return t}
+function focusOk(d,f){
+  var pr=[['N','S'],['S','N']],i,a,b,La,Lb,M;
+  if(f==='tva')return hpOf(d.N)>=22||hpOf(d.S)>=22;
+  function anyP(fn){return fn(d.N,d.S)||fn(d.S,d.N)}
+  var tot=hpOf(d.N)+hpOf(d.S),mn=Math.min(hpOf(d.N),hpOf(d.S)),mx=Math.max(hpOf(d.N),hpOf(d.S));
+  if(f==='slam'){var LN=shapeOf(d.N),LS=shapeOf(d.S);return tot>=30&&['S','H','D','C'].some(function(m){return LN[m]+LS[m]>=8})}
+  if(f==='invit')return tot>=23&&tot<=25&&mx>=12&&mn>=8&&mn<=11;
+  if(f==='trumf')return anyP(function(a,b){var La=shapeOf(a),Lb=shapeOf(b),h=hpOf(a);return h>=12&&h<=19&&['S','H','D','C'].some(function(m){return La[m]>=5&&Lb[m]>=4&&htpWith(b,m)>=6&&htpWith(b,m)<=12})});
+  if(f==='sang')return anyP(function(a,b){var Lb=shapeOf(b),h=hpOf(a),g=hpOf(b);return isBal(shapeOf(a))&&((h>=15&&h<=17&&g>=8&&g<=12)||(h>=20&&h<=21&&g>=4&&g<=10))&&Lb.H<4&&Lb.S<4});
+  if(f==='tvafarg')return anyP(function(a,b){var L=shapeOf(a),v=[L.S,L.H,L.D,L.C].sort(function(x,y){return y-x}),h=hpOf(a);return h>=12&&h<=19&&v[0]>=5&&v[1]>=4&&hpOf(b)>=6});
+  if(f==='svag')return anyP(function(a,b){var L=shapeOf(a),h=hpOf(a);return h>=6&&h<=10&&(L.D===6||L.H===6||L.S===6||Math.max(L.S,L.H,L.D,L.C)>=7)&&hpOf(b)>=12});
+  if(f==='rkc')return hpOf(d.N)+hpOf(d.S)>=31&&['H','S'].some(function(m){return shapeOf(d.N)[m]+shapeOf(d.S)[m]>=9});
+  if(f==='nt'||f==='stenberg'){
+    for(i=0;i<2;i++){
+      a=d[pr[i][0]];b=d[pr[i][1]];La=shapeOf(a);Lb=shapeOf(b);
+      if(f==='nt'&&hpOf(a)>=15&&hpOf(a)<=17&&isBal(La)&&hpOf(b)>=8&&(Lb.H>=4||Lb.S>=4))return true;
+      if(f==='stenberg'){['H','S'].forEach(function(m){if(hpOf(a)>=12&&hpOf(a)<=19&&La[m]>=5&&Lb[m]>=4&&htpWith(b,m)>=13)M=true});['C','D'].forEach(function(m){var mx=Math.max(La.S,La.H,La.D,La.C);if(hpOf(a)>=12&&hpOf(a)<=19&&La[m]>=4&&La[m]===mx&&La.H<5&&La.S<5&&Lb[m]>=4&&Lb.H<4&&Lb.S<4&&htpWith(b,m)>=13)M=true})}
+    }
+    return !!M;
+  }
+  return nsOk(d);
+}
+function dubDeal(){
+  var v=rng()<.5?'A':'B',d,i,SU4=['S','H','D','C'];
+  for(i=0;i<4000;i++){
+    d=shuffleDeal();
+    if(v==='A'){
+      var dl=['E','W'][Math.floor(rng()*2)],op=botCall({mode:'stord',hands:d,dealer:dl,bids:[]},dl).c;
+      if(!/^1[CDHS]$/.test(op))continue;
+      var ds=SEATS[(SEATS.indexOf(dl)+1)%4],L=shapeOf(d[ds]);
+      if(hpOf(d[ds])>=12&&L[op[1]]<=2&&SU4.every(function(m){return m===op[1]||L[m]>=3})){d.dealer=dl;return d}
+    }else{
+      var dl2=['N','S'][Math.floor(rng()*2)],ol=SEATS[(SEATS.indexOf(dl2)+1)%4],h=d[dl2],hh=hpOf(h),Lo=shapeOf(d[ol]);
+      var sh=SU4.filter(function(m){return Lo[m]<=2}).length;
+      if(hh>=12&&hh<=19&&!(isBal(shapeOf(h))&&hh>=15&&hh<=17)&&hpOf(d[ol])>=12&&sh===1&&Math.max(Lo.S,Lo.H,Lo.D,Lo.C)<=4){d.dealer=dl2;return d}
+    }
+  }
+  return shuffleDeal();
+}
+function biasedDeal(mode,focus){
+  if(focus==='dubbling')return dubDeal();
+  var f=rng()<0.8||focus==='inkliv'?oppClear:oppBorder,d,i;
+  var oppCond=mode==='stord'&&(!focus||focus==='alla'||focus==='inkliv');
+  for(i=0;i<4000;i++){
+    d=shuffleDeal();if(!focusOk(d,focus))continue;
+    if(!oppCond||f(d.E)||f(d.W))return d;
+  }
+  return shuffleDeal();
+}
+function R(c,e){return {c:c,e:e}}
+function botCall(st,seat){
+  if(st.mode==='ostord')return R('P');
+  var h=st.hands[seat],hp=hpOf(h),L={S:0,H:0,D:0,C:0},c=ctx(st),sd=side(seat);
+  h.forEach(function(k){L[k[0]]++});
+  var shape=[L.S,L.H,L.D,L.C].sort(function(a,b){return b-a}).join('');
+  var bal=shape==='4333'||shape==='4432'||shape==='5332';
+  var order=['C','D','H','S'],s,i,x;
+  function lowest(su){for(var l=1;l<=7;l++){var y=l+su;if(!c.lb||rank(y)>rank(c.lb))return y}}
+  var mb=st.bids.filter(function(b){return isBid(b.c)&&b.s===seat}).length;
+  var pb=st.bids.filter(function(b){return isBid(b.c)&&b.s===partner(seat)});
+  var all=st.bids,myIdx=-1;all.forEach(function(b,i){if(b.s===seat&&isBid(b.c)&&myIdx<0)myIdx=i});
+  if(mb){
+    var pAfter=all.filter(function(b,i){return i>myIdx&&b.s===partner(seat)&&isBid(b.c)});
+    var htpFor=function(su){var t=hp;for(var q=0;q<4;q++)if(order[q]!==su){var n=L[order[q]];t+=n===0?3:n===1?2:n===2?1:0}return t};
+    if(mb===1&&pAfter.length){
+      var pS=pAfter[0].c[1],mS=all[myIdx].c[1];
+      if(pS!=='N'&&L[pS]>=4){var ht=htpFor(pS);if(ht>=12){x=lowest(pS);if(ht>=17&&ht<=19&&+x[0]<=3)x=(+x[0]+1)+pS;if(ht<=19&&+x[0]<=4)return R(x,'Stöd i svarshandens färg, '+ht+' htp ('+(ht<=16?'lägsta höjning 12-16':'enkelhopp 17-19')+')')}}
+      if(mS!=='N'&&L[mS]>=6&&hp<=16){x=lowest(mS);if(+x[0]<=3)return R(x,'Egen 6+färg på lägsta nivå, 12-16 htp')}
+      if(bal&&hp>=12&&hp<=14){x=lowest('N');if(+x[0]<=2)return R(x,'NT på lägsta nivå, 12-14 hp balanserad')}
+      return R('P');
+    }
+    if(mb===1&&!pAfter.length&&pb.length&&c.lb&&side(c.lbS)!==sd){
+      var ps3=pb[0].c[1];
+      if(ps3!=='N'&&L[ps3]>=4){var h3=htpFor(ps3);if(h3>=8){x=lowest(ps3);if(+x[0]<=3)return R(x,'Konkurrens: stöd i partnerns färg, '+h3+' htp')}}
+    }
+    return R('P');
+  }
+  if(pb.length){
+    var pc=pb[0].c,ps=pc[1];
+    if(ps!=='N'&&L[ps]>=4){
+      var htp=hp;for(i=0;i<4;i++)if(order[i]!==ps){var n=L[order[i]];htp+=n===0?3:n===1?2:n===2?1:0}
+      var tg=null,lv=+pc[0];
+      if(htp>=13&&(ps==='H'||ps==='S'))tg='4'+ps;else if(htp>=10)tg=(lv+2)+ps;else if(htp>=6)tg=(lv+1)+ps;
+      if(tg&&+tg[0]<=5&&legal(st,tg,seat))return R(tg,'Stöd i partnerns färg, '+htp+' htp (6-9 enkel, 10-12 hopp, 13+ utgång i hö)');
+    }
+    if(hp>=6){
+      var bs=null;for(i=3;i>=0;i--){s=order[i];if(s!==ps&&L[s]>=4&&(!bs||L[s]>L[bs]))bs=s}
+      if(bs){x=lowest(bs);if(+x[0]===1||(+x[0]===2&&hp>=11))return R(x,'Ny färg, 4+kort, '+(+x[0]===1?'6+ hp (1 över 1)':'11+ hp (2 över 1)')+', rondkrav')}
+      if(hp<=10&&ps!=='N'&&L[ps]<4){x='1N';if(legal(st,x,seat))return R(x,'6-10 hp, förnekar 4-korts stöd och egen färg på 1-nivå')}
+    }
+    return R('P','För svag för att svara (under 6 hp) eller inget passande bud');
+  }
+  if(!c.lb){
+    if(hp>=15&&hp<=17&&bal)return R('1N','15-17 hp, balanserad');
+    if(hp>=12){
+      var m=Math.max(L.S,L.H,L.D,L.C),ps2=null;
+      if(m>=5){for(i=3;i>=0;i--)if(L[order[i]]===m){ps2=order[i];break}}
+      else{for(i=0;i<4;i++)if(L[order[i]]===m){ps2=order[i];break}}
+      return R('1'+ps2,'12-19 hp, 4+färg');
+    }
+    if(hp>=6&&hp<=10){
+      for(i=1;i<4;i++)if(L[order[i]]===6)return R('2'+order[i],'6-10 hp, exakt 6-korts färg (svag tvåa)');
+      for(i=0;i<4;i++)if(L[order[i]]>=7)return R('3'+order[i],'Spärrbud, 6-10 hp, 7-korts färg');
+    }
+    return R('P');
+  }
+  if(side(c.lbS)!==sd&&c.dbl===0&&c.lb[1]!=='N'){
+    var ls=c.lb[1],lvl=+c.lb[0];
+    if(hp>=12&&hp<=17){
+      var best=null;for(i=0;i<4;i++){s=order[i];if(s!==ls&&L[s]>=5&&(!best||L[s]>=L[best]))best=s}
+      if(best){x=lowest(best);if(+x[0]<=2)return R(x,'Enkelt inkliv, 12-17 hp, 5+färg')}
+    }
+    if(hp>=15&&hp<=17&&bal&&L[ls]>=3&&lvl===1)return R('1N','Inkliv 1NT, 15-17 hp, håll i öppningsfärgen');
+    if(hp>=12&&lvl<=2){
+      var okd=L[ls]<=2;for(i=0;i<4;i++)if(order[i]!==ls&&L[order[i]]<3)okd=false;
+      if(okd)return R('X','Upplysningsdubbling, 12+ hp, minst 3 kort i objudna färger');
+    }
+    if(hp>=6&&hp<=10&&lvl===1){
+      for(i=0;i<4;i++){s=order[i];if(s!==ls&&L[s]>=6){x=lowest(s);var j=(+x[0]+1)+s;if(+j[0]<=3)return R(j,'Hoppande inkliv, 6-10 hp, 6+färg')}}
+    }
+  }
+  return R('P');
+}
+function advance(st){
+  var g=0;
+  while(!ended(st)&&isBot(turn(st))&&g++<30){var s=turn(st),r=botCall(st,s);st.bids.push(r.e?{s:s,c:r.c,e:r.e}:{s:s,c:r.c})}
+  return st;
+}
+function newDeal(no,mode,focus,seed){
+  rng=mulberry(seed);
+  if(focus==='dubbling')mode='stord';
+  var hd=biasedDeal(mode,focus),dl=hd.dealer;delete hd.dealer;
+  if(!dl)dl=(focus&&focus!=='alla'&&focus!=='inkliv')?['N','S'][Math.floor(rng()*2)]:SEATS[Math.floor(rng()*4)];
+  return advance({id:'g'+seed,seed:seed,no:no,mode:mode,focus:focus||'alla',hands:hd,dealer:dl,bids:[],review:null,rep:0});
+}
+function replay(st){return build({no:st.no,seed:st.seed,mode:st.mode,focus:st.focus,rep:(st.rep||0)+1,h:[]})}
+function handHtml(cards){
+  var out='';
+  ['S','H','D','C'].forEach(function(s){
+    var v=cards.filter(function(c){return c[0]===s}).map(function(c){return +c.slice(1)}).sort(function(a,b){return b-a});
+    out+='<div class="'+(s==='H'||s==='D'?'red':'')+'">'+SYM[s]+' '+(v.length?v.map(function(n){return RK[n]||n}).join(' '):'–')+'</div>';
+  });
+  return '<div class="hand">'+out+'</div>';
+}
+function handText(cards){
+  return ['S','H','D','C'].map(function(s){
+    var v=cards.filter(function(c){return c[0]===s}).map(function(c){return +c.slice(1)}).sort(function(a,b){return b-a});
+    return SYM[s]+' '+(v.length?v.map(function(n){return RK[n]||n}).join(' '):'-');
+  }).join(' | ');
+}
+function contractText(st){
+  var x=ctx(st);if(!x.lb)return 'Alla passade';
+  return 'Slutkontrakt: '+fmt(x.lb)+(x.dbl===1?' X':x.dbl===2?' XX':'')+' ('+NAME[x.lbS]+' bjöd först kontraktets slutbud)';
+}
+function auctionHtml(st,end){
+  var pad=SEATS.indexOf(st.dealer),h='<div class="aud">',i;
+  SEATS.forEach(function(s){h+='<div class="ah'+(side(s)===0?' us':'')+'">'+NAME[s]+(s===st.dealer?'<span class="dl">D</span>':'')+'</div>'});
+  for(i=0;i<pad;i++)h+='<div></div>';
+  st.bids.forEach(function(b){h+=b.c==='P'?'<div class="ac pass">Pass</div>':'<div class="ac">'+fmt(b.c)+'</div>'});
+  if(!end)h+='<div class="ac cur">…</div>';
+  return h+'</div>';
+}
+var savedFlag=false,copied=false,room='',rev=0,es=null,connState='offline',sender=Math.random().toString(36).slice(2,8);
+try{room=localStorage.getItem('bt_room')||''}catch(e){}
+function newSeed(){return Math.floor(Math.random()*1000000000)}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function pack(st){
+  if(!st||!st.hands)return {menu:true,no:(st&&st.no)||0,mode:modeSel,focus:focusSel};
+  return {no:st.no,seed:st.seed,mode:st.mode,focus:st.focus,rep:st.rep||0,h:st.bids.filter(function(b){return !isBot(b.s)}).map(function(b){return b.s+b.c})};
+}
+function build(m){
+  var st=newDeal(m.no,m.mode,m.focus,m.seed);st.rep=m.rep||0;
+  (m.h||[]).forEach(function(x){var s=x[0],c=x.slice(1);if(ended(st)||turn(st)!==s||!legal(st,c,s))return;st.bids.push({s:s,c:c});advance(st)});
+  return st;
+}
+function adopt(p){
+  if(p.menu){state={menu:true,no:p.no};modeSel=p.mode||'stord';focusSel=p.focus||'alla'}
+  else state=build(p);
+  clr();render();
+}
+function topic(){return 'budtraning-'+room.toLowerCase().replace(/[^a-z0-9]/g,'')}
+function send(m){
+  if(!room)return;
+  try{fetch('https://ntfy.sh/'+topic(),{method:'POST',body:JSON.stringify(m)}).catch(function(){})}catch(e){}
+}
+function connect(){
+  if(es){try{es.close()}catch(e){}}
+  if(!room)return;
+  connState='ansluter';
+  try{
+    es=new EventSource('https://ntfy.sh/'+topic()+'/sse?since=all');
+    es.onopen=function(){connState='online';if(state)render()};
+    es.onerror=function(){connState='offline';if(state)render()};
+    es.onmessage=function(ev){
+      try{var o=JSON.parse(ev.data);if(o.event&&o.event!=='message')return;var m=JSON.parse(o.message);
+        if(m.from===sender||!(m.v>rev))return;rev=m.v;adopt(m.st)}catch(e){}
+    };
+  }catch(e){connState='offline'}
+}
+function save(st){state=st;rev++;render();send({v:rev,from:sender,st:pack(st)})}
+function makeCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({v:rev,st:pack(state)}))))}catch(e){return ''}}
+function applyCode(c){try{var o=JSON.parse(decodeURIComponent(escape(atob(c.trim()))));if(o&&o.st){if(o.v>rev)rev=o.v;adopt(o.st);return true}}catch(e){}return false}
+function copyText(t,done){
+  function ok(){copied=true;render();setTimeout(function(){copied=false;render()},1800)}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback()});return}}catch(e){}
+  fallback();
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');ok()}catch(e){prompt('Kopiera texten:',t)}document.body.removeChild(ta)}
+}
+function reviewPrompt(st){
+  var auc=st.bids.map(function(b,i){return (i+1)+'. '+NAME[b.s]+': '+txt(b.c)+(b.e?' [robotens avsikt: '+b.e+']':'')}).join('\n');
+  return "Du är bridgecoach. Bedöm budgivningen UTIFRÅN ENBART Nordisk standard (2012-08-22), alltså bifogad nordisk_standard.pdf om den finns, annars regelsammanfattningen längst ned. Uppfinn inga regler. Täcker reglerna inte ett bud, säg det i stället för att gissa. Spelarna är Norr och Syd (partners); Öst och Väst är enkla robotar vars bud inte ska bedömas.\n\nGIVET (given "+st.no+", given av "+NAME[st.dealer]+"):\nNorr: "+handText(st.hands.N)+"\nSyd: "+handText(st.hands.S)+"\nÖst: "+handText(st.hands.E)+"\nVäst: "+handText(st.hands.W)+"\n\nBUDGIVNING:\n"+auc+"\n\nUPPGIFT: Räkna hp och htp för Norr och Syd. För varje bud av Norr och Syd (och Öst/Västs bud som inte är pass, kort): förklara vad budet visar enligt dokumentet, bedöm om det var rätt, fel eller valfritt, och om det var fel eller valfritt: ange vilket bud som borde bjudits och varför, med hp/htp/fördelning. Avsluta med en kort sammanfattning. Svara på svenska.\n\n"+REF;
+}
+function reviewHtml(st){
+  return '<div class="card"><p class="status">Rättning</p><p class="mu">Kopiera underlaget och klistra in det i Claude (appen eller claude.ai). Då får ni rättning och förklaring bud för bud. Ladda gärna upp nordisk_standard.pdf också.</p><div class="row" style="margin-top:8px"><button id="xp" class="pri">'+(copied?'Kopierad ✓':'Kopiera rättningsunderlag')+'</button></div></div>';
+}
+function connLabel(){return 'Rum '+room+' · '+connState}
+function roomScreen(){
+  app.innerHTML='<div class="hero"><h1>Budträning</h1><p class="mu">Nordisk standard. Skriv samma rumskod på båda enheterna för att spela tillsammans.</p><div class="card"><p class="status">Rumskod</p><input id="rc" maxlength="12" autocapitalize="characters" autocomplete="off" style="width:100%;font:600 28px/1.2 ui-monospace,Menlo,monospace;letter-spacing:4px;text-transform:uppercase;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink)" placeholder="T.EX. K7M2QX"><div class="row" style="margin-top:12px"><button id="rg">Skapa ny kod</button><button id="rj" class="pri" style="flex:1;min-height:52px;font-size:18px">Anslut</button></div><p class="mu" style="margin-top:10px">Båda måste skriva exakt samma kod. Koden fungerar som ett privat rum och kan vara vad som helst, minst 5 tecken.</p></div></div>';
+  var inp=document.getElementById('rc');
+  document.getElementById('rg').onclick=function(){var c='',a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';for(var i=0;i<6;i++)c+=a[Math.floor(Math.random()*a.length)];inp.value=c};
+  document.getElementById('rj').onclick=function(){var v=inp.value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(v.length<5){inp.style.borderColor='#d24a3a';return}room=v;try{localStorage.setItem('bt_room',room)}catch(e){}connect();render()};
+}
+function loadSaved(){try{return JSON.parse(localStorage.getItem('bt_saved')||'[]')}catch(e){return []}}
+function putSaved(l){try{localStorage.setItem('bt_saved',JSON.stringify(l))}catch(e){}}
+function saveDeal(){
+  if(!state||!state.hands)return;
+  var st=state,l=loadSaved(),p=pack(st);p.id='d'+Date.now();p.savedAt=new Date().toISOString().slice(0,10);
+  l.unshift(p);putSaved(l.slice(0,40));
+  savedFlag=true;render();setTimeout(function(){savedFlag=false;render()},1800);
+}
+function savedHtml(){
+  var l=loadSaved();if(!l.length)return '';
+  var h='<div class="card"><p class="status">Sparade givar (på den här enheten)</p>';
+  l.forEach(function(s){
+    h+='<div style="border-top:1px solid var(--line);padding:8px 0"><div class="mu">Giv '+esc(s.no)+' · '+(s.mode==='ostord'?'ostört':'störd')+' · '+esc(s.savedAt)+'</div><div class="row" style="margin-top:6px"><button data-play="'+esc(s.id)+'">Spela om</button>'+((s.h&&s.h.length)?'<button data-show="'+esc(s.id)+'">Visa budgivning</button>':'')+'<button data-del="'+esc(s.id)+'" class="mu">Ta bort</button></div></div>';
+  });
+  return h+'</div>';
+}
+function attachSaved(){
+  function find(id){return loadSaved().filter(function(s){return s.id===id})[0]}
+  Array.prototype.forEach.call(app.querySelectorAll('[data-play]'),function(b){b.onclick=function(){var s=find(b.getAttribute('data-play'));if(s){clr();var q=JSON.parse(JSON.stringify(s));q.h=[];q.rep=(q.rep||0)+1;save(build(q))}}});
+  Array.prototype.forEach.call(app.querySelectorAll('[data-show]'),function(b){b.onclick=function(){var s=find(b.getAttribute('data-show'));if(s){clr();save(build(s))}}});
+  Array.prototype.forEach.call(app.querySelectorAll('[data-del]'),function(b){b.onclick=function(){var id=b.getAttribute('data-del');putSaved(loadSaved().filter(function(s){return s.id!==id}));render()}});
+}
+var score={},hintText='',hintBusy=false,showHp=false,focusSel='alla';
+function mySeat(st){if(seat!=='X')return seat;var t=turn(st);return (t==='N'||t==='S')?t:'N'}
+function lastHumanSeat(st){for(var i=st.bids.length-1;i>=0;i--)if(!isBot(st.bids[i].s))return st.bids[i].s;return null}
+function submitCall(st,me,c){
+  var nb=st.bids.concat([{s:me,c:c}]);clr();
+  save(advance({id:st.id,seed:st.seed,no:st.no,mode:st.mode,focus:st.focus,hands:st.hands,dealer:st.dealer,bids:nb,review:null,rep:st.rep||0}));
+  
+}
+function canUndo(st){for(var i=st.bids.length-1;i>=0;i--){if(!isBot(st.bids[i].s))return seat==='X'||st.bids[i].s===seat}return false}
+function undoBid(){
+  var st=state,i;
+  for(i=st.bids.length-1;i>=0;i--)if(!isBot(st.bids[i].s))break;
+  if(i<0||(seat!=='X'&&st.bids[i].s!==seat))return;
+  clr();save({id:st.id,seed:st.seed,no:st.no,mode:st.mode,focus:st.focus,hands:st.hands,dealer:st.dealer,bids:st.bids.slice(0,i),review:null,rep:st.rep||0});
+}
+function hpInfo(h){
+  var L=shapeOf(h);
+  return hpOf(h)+' hp · '+[L.S,L.H,L.D,L.C].sort(function(a,b){return b-a}).join('-')+(isBal(L)?' · balanserad':' · obalanserad');
+}
+function setSel(m,f){modeSel=m;focusSel=f;if(!state||!state.hands){state=state||{menu:true,no:0};rev++;send({v:rev,from:sender,st:pack(state)})}}
+function setSeat(s){if(s===null&&seat)lastSeat=seat;seat=s;clr();try{if(s)localStorage.setItem('bt_seat',s);else localStorage.removeItem('bt_seat')}catch(e){}render()}
+
+var pickL=null,pickS=null,pickO=null;
+function clr(){pickL=null;pickS=null;pickO=null;hintText=''}
+function curPick(){return pickO||(pickL&&pickS?pickL+pickS:null)}
+function oppList(st){
+  var l=st.bids.filter(function(b){return side(b.s)===1&&b.c!=='P'&&b.e});
+  if(!l.length)return '';
+  return '<p class="mu" style="margin:10px 0 2px"><b>Motståndarnas bud (robotens avsikt)</b></p>'+l.map(function(b){return '<p style="margin:2px 0">'+NAME[b.s]+' '+fmt(b.c)+' – '+esc(b.e)+'</p>'}).join('');
+}
+function fanHtml(cards){
+  var o='';
+  ['S','H','C','D'].forEach(function(s){
+    cards.filter(function(c){return c[0]===s}).map(function(c){return +c.slice(1)}).sort(function(a,b){return b-a}).forEach(function(n){
+      o+='<div class="cd'+(s==='H'||s==='D'?' r':'')+'" data-s="'+SYM[s]+'"><b>'+(RK[n]||n)+'</b><i>'+SYM[s]+'</i></div>';
+    });
+  });
+  return '<div class="fan">'+o+'</div>';
+}
+function seatHtml(st,s,rel){
+  var lc=null;st.bids.forEach(function(b){if(b.s===s)lc=b.c});
+  return '<div class="seat'+(!ended(st)&&turn(st)===s?' turn':'')+'"><span class="nm">'+NAME[s]+(s===st.dealer?'<span class="dl">D</span>':'')+'</span><small>'+rel+'</small><span class="bks">'+new Array(14).join('<i class="bk"></i>')+'</span><span class="lc">'+(lc?fmt(lc):'&nbsp;')+'</span></div>';
+}
+function endHand(st,s){return '<div class="eh'+(side(s)===0?' us':'')+'"><b>'+NAME[s]+'</b>'+handHtml(st.hands[s])+'</div>'}
+function handBlock(st,me){
+  return '<div class="row"><span class="nm">'+NAME[me]+(seat==='X'?' · på tur':' · du')+'</span>'+(me===st.dealer?'<span class="dl" style="margin:0">D</span>':'')+'</div>'+fanHtml(st.hands[me])+'<div class="row"><button id="hpb" class="sm ghost">'+(showHp?'Dölj poäng':'Visa poäng')+'</button>'+(showHp?'<span class="chip" style="background:rgba(0,0,0,.28);color:#f1ecdc;border-color:rgba(255,255,255,.2)">'+hpInfo(st.hands[me])+'</span>':'')+'</div>';
+}
+function render(){
+  if(!room){roomScreen();return}
+  if(!seat){
+    app.innerHTML='<div class="hero"><h1>Budträning</h1><p class="mu">Nordisk standard. Vem sitter vid den här enheten?</p><div class="modes" style="margin-top:18px"><button id="sN" class="seatpick'+(lastSeat==='N'?' on':'')+'"><b>Norr</b><span>Du spelar Norr på den här enheten.</span></button><button id="sS" class="seatpick'+(lastSeat==='S'?' on':'')+'"><b>Syd</b><span>Du spelar Syd på den här enheten.</span></button></div><div style="margin-top:14px"><button id="sX" class="seatpick'+(lastSeat==='X'?' on':'')+'" style="width:100%;min-height:90px"><b>Båda på en enhet</b><span>Du spelar både Norr och Syd på den här enheten.</span></button></div></div>';
+    document.getElementById('sN').onclick=function(){setSeat('N')};
+    document.getElementById('sS').onclick=function(){setSeat('S')};
+    document.getElementById('sX').onclick=function(){setSeat('X')};
+    return;
+  }
+  if(!state||!state.hands){
+    app.innerHTML='<div class="hero"><h1>Budträning</h1><p class="mu">Nordisk standard</p><p class="status" style="margin-top:20px">Välj budgivning</p><div class="modes"><button id="m1" class="mode'+(modeSel==='stord'?' on':'')+'"><b>Störd budgivning</b><span>Öst och Väst lägger sig i. Träna inkliv, dubbling och spärr.</span></button><button id="m2" class="mode'+(modeSel==='ostord'?' on':'')+'"><b>Ostörd budgivning</b><span>Motståndarna passar. Träna ert eget system.</span></button></div><p class="status" style="margin-top:24px">Vad vill ni träna?</p><div class="foc">'+FOC.map(function(f){return '<button class="ft'+(f[0]===focusSel?' on':'')+'" data-f="'+f[0]+'">'+f[1]+'</button>'}).join('')+'</div><div style="margin-top:16px"><button id="go2" class="pri" style="width:100%;min-height:60px;font-size:20px">Starta träning</button></div>'+savedHtml()+'<div class="row" style="margin-top:14px"><button id="sw" class="sm">Byt plats</button><button id="rm" class="sm">Byt rum</button></div></div>';
+    var no=(state&&state.no)||0;
+    var b1=document.getElementById('m1'),b2=document.getElementById('m2');
+    b1.onclick=function(){setSel('stord',focusSel);b1.classList.add('on');b2.classList.remove('on')};
+    document.getElementById('go2').onclick=function(){clr();save(newDeal(no+1,modeSel,focusSel,newSeed()))};
+    b2.onclick=function(){setSel('ostord',focusSel);b2.classList.add('on');b1.classList.remove('on')};
+    document.getElementById('sw').onclick=function(){setSeat(null)};
+    document.getElementById('rm').onclick=function(){room='';try{localStorage.removeItem('bt_room')}catch(e){}if(es)es.close();connState='offline';render()};
+    Array.prototype.forEach.call(app.querySelectorAll('[data-f]'),function(b){b.onclick=function(){setSel(modeSel,b.getAttribute('data-f'));Array.prototype.forEach.call(app.querySelectorAll('[data-f]'),function(c){c.classList.toggle('on',c===b)})}});
+    attachSaved();
+    return;
+  }
+  var st=state,me=mySeat(st),end=ended(st),t=turn(st),mine=!end&&t===me;
+  var base=seat==='X'?'S':me,ix=SEATS.indexOf(base),pos={l:SEATS[(ix+1)%4],t:SEATS[(ix+2)%4],r:SEATS[(ix+3)%4]},x=ctx(st);
+  function rel(s){return s===partner(me)?'Partner':'Motstånd'}
+  var h='<header class="bar"><div class="brand"><b>♠</b>Budträning</div><div class="row"><span class="chip hi">Giv '+st.no+(st.rep?' · omspel':'')+'</span><span class="chip">'+(st.mode==='ostord'?'Ostörd':'Störd')+'</span>'+(st.focus&&st.focus!=='alla'?'<span class="chip">'+focLabel(st.focus)+'</span>':'')+'<span class="chip">'+(seat==='X'?'En enhet':'Du är '+NAME[me])+'</span><span class="chip">'+connLabel()+'</span></div><div class="row"><button id="sv" class="sm">'+(savedFlag?'Sparad ✓':'Spara given')+'</button><button id="md" class="sm">Byt tema</button><button id="sw" class="sm">Byt plats</button><button id="cpb" class="sm">Spelkod</button><button id="fsb" class="sm">Helskärm</button></div></header><main class="main">';
+  var hbx=x.lb?'<div class="hb">'+fmt(x.lb)+(x.dbl===1?' <small>X</small>':x.dbl===2?' <small>XX</small>':'')+'</div><div class="hl">'+(end?'Slutkontrakt · ':'Högsta bud · ')+NAME[x.lbS]+'</div>':'<div class="hl">'+(end?'Alla passade':'Ingen har bjudit än')+'</div>';
+  if(end){
+    h+='<section class="table end"><div class="seatT">'+endHand(st,pos.t)+'</div><div class="seatL">'+endHand(st,pos.l)+'</div><div class="center">'+hbx+'</div><div class="seatR">'+endHand(st,pos.r)+'</div><div class="mine">'+endHand(st,base)+'</div></section>';
+  }else{
+    h+='<section class="table"><div class="seatT">'+(pos.t===me?handBlock(st,me):seatHtml(st,pos.t,rel(pos.t)))+'</div><div class="seatL">'+seatHtml(st,pos.l,rel(pos.l))+'</div><div class="center">'+hbx+'</div><div class="seatR">'+seatHtml(st,pos.r,rel(pos.r))+'</div><div class="mine">'+(base===me?handBlock(st,me):seatHtml(st,base,rel(base)))+'</div></section>';
+  }
+  h+='<aside class="side"><div class="card"><div class="row" style="justify-content:space-between;margin-bottom:8px"><p class="status" style="margin:0">Budgivning</p>'+(canUndo(st)?'<button id="undo" class="sm">Ångra mitt senaste bud</button>':'')+'</div><div class="ascroll">'+auctionHtml(st,end)+'</div></div>';
+  if(end){
+    h+='<div class="card"><p class="status">'+contractText(st)+'</p>'+oppList(st)+'<div class="row" style="margin-top:12px"><button id="rp">Spela om given</button><button id="nd" class="pri">Ny giv</button></div></div>'+reviewHtml(st);
+  }else if(mine){
+    h+='<div class="card"><p class="status">'+(seat==='X'?NAME[me]+' bjuder':'Din tur att bjuda')+'</p><div class="lv">';
+    for(var l=1;l<=7;l++){var okL=SU.some(function(s){return legal(st,l+s,me)});h+='<button data-l="'+l+'" '+(okL?'':'disabled ')+(pickL===l?'class="on"':'')+'>'+l+'</button>'}
+    h+='</div><div class="st">';
+    SU.forEach(function(s){var okS=pickL?legal(st,pickL+s,me):true;h+='<button data-s="'+s+'" '+(okS?'':'disabled ')+(pickS===s?'class="on"':'')+'><span class="'+(s==='H'||s==='D'?'red':'')+(s==='N'?' nt':'')+'">'+SYM[s]+'</span></button>'});
+    h+='</div><div class="ops"><button data-o="P">Pass</button><button data-o="X" '+(legal(st,'X',me)?'':'disabled')+'>X</button><button data-o="XX" '+(legal(st,'XX',me)?'':'disabled')+'>XX</button></div></div>';
+  }else{
+    h+='<div class="card wait"><p class="status">Väntar på '+NAME[t]+'</p><p class="mu">Budet visas här så fort det är lagt.</p></div>';
+  }
+  h+='</aside></main>';
+  app.innerHTML=h;
+  document.getElementById('sw').onclick=function(){setSeat(null)};
+  var cb=document.getElementById('cpb');if(cb)cb.onclick=function(){var c=makeCode();try{navigator.clipboard.writeText(c)}catch(e){}var q=prompt('Din spelkod är kopierad. Klistra in partnerns kod här för att synka manuellt (lämna tomt för att avbryta):','');if(q&&!applyCode(q))alert('Koden gick inte att läsa.')};
+  var xb=document.getElementById('xp');if(xb)xb.onclick=function(){copyText(reviewPrompt(st))};
+  var fb=document.getElementById('fsb');if(fb)fb.onclick=function(){try{var d=document.documentElement;if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}else{(d.requestFullscreen||d.webkitRequestFullscreen).call(d)}}catch(e){}};
+  document.getElementById('md').onclick=function(){clr();setSel(st.mode||'stord',st.focus||'alla');save({menu:true,no:st.no})};
+  document.getElementById('sv').onclick=saveDeal;
+  var hb=document.getElementById('hpb');if(hb)hb.onclick=function(){showHp=!showHp;try{localStorage.setItem('bt_hp',showHp?'1':'0')}catch(e){}render()};
+  var un=document.getElementById('undo');if(un)un.onclick=undoBid;
+  var nd=document.getElementById('nd');if(nd)nd.onclick=function(){clr();save(newDeal(st.no+1,st.mode,st.focus,newSeed()))};
+  var rp=document.getElementById('rp');if(rp)rp.onclick=function(){clr();save(replay(st))};
+  Array.prototype.forEach.call(app.querySelectorAll('[data-l]'),function(b){
+    b.onclick=function(){pickL=+b.getAttribute('data-l');pickO=null;if(pickS&&!legal(st,pickL+pickS,me))pickS=null;if(pickS){submitCall(st,me,pickL+pickS);return}render()};
+  });
+  Array.prototype.forEach.call(app.querySelectorAll('[data-s]'),function(b){
+    b.onclick=function(){pickS=b.getAttribute('data-s');pickO=null;if(pickL&&!legal(st,pickL+pickS,me))pickL=null;if(pickL){submitCall(st,me,pickL+pickS);return}render()};
+  });
+  Array.prototype.forEach.call(app.querySelectorAll('[data-o]'),function(b){
+    b.onclick=function(){var o=b.getAttribute('data-o');if(legal(st,o,me)){submitCall(st,me,o);return}pickO=o;pickL=null;pickS=null;render()};
+  });
+  var go=document.getElementById('go');
+  if(go)go.onclick=function(){
+    var c=curPick();if(!c||!legal(st,c,me))return;
+    var nb=st.bids.concat([{s:me,c:c}]);clr();
+    save(advance({id:st.id,seed:st.seed,no:st.no,mode:st.mode,focus:st.focus,hands:st.hands,dealer:st.dealer,bids:nb,review:null,rep:st.rep||0}));
+    
+  };
+}
+
+if(room)connect();
+render();
+})();
+</script>
+</body>
+</html>
